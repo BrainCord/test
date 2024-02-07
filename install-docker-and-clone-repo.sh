@@ -58,3 +58,9 @@ sed -i "s|^PROVER_ENDPOINTS=.*|PROVER_ENDPOINTS=${PROVER_ENDPOINTS}|" "$ENV_FILE
 cp "$ENV_FILE" "$(dirname "$ENV_FILE")/.env"
 
 echo "Конфигурация завершена и сохранена в .env.sample и .env"
+
+# Запуск контейнеров с помощью Docker Compose
+docker compose up -d
+
+echo -e "\033[33mNODE STARTED!!! LET'S FCKN GOO!!!\033[0m"
+
