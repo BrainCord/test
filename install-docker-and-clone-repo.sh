@@ -36,3 +36,25 @@ git clone https://github.com/taikoxyz/simple-taiko-node.git
 # Переход в каталог проекта
 cd simple-taiko-node
 
+# Запрос значений для конфигурации
+echo "Введите значения для конфигурации:"
+read -p "L1_ENDPOINT_HTTP: " L1_ENDPOINT_HTTP
+read -p "L1_ENDPOINT_WS: " L1_ENDPOINT_WS
+read -p "ENABLE_PROPOSER (true/false): " ENABLE_PROPOSER
+read -p "L1_PROPOSER_PRIVATE_KEY: " L1_PROPOSER_PRIVATE_KEY
+read -p "PROVER_ENDPOINTS: " PROVER_ENDPOINTS
+
+# Путь к файлу конфигурации
+ENV_FILE="/root/simple-taiko-node/.env.sample"
+
+# Обновление файла конфигурации
+sed -i "s|^L1_ENDPOINT_HTTP=.*|L1_ENDPOINT_HTTP=${L1_ENDPOINT_HTTP}|" "$ENV_FILE"
+sed -i "s|^L1_ENDPOINT_WS=.*|L1_ENDPOINT_WS=${L1_ENDPOINT_WS}|" "$ENV_FILE"
+sed -i "s|^ENABLE_PROPOSER=.*|ENABLE_PROPOSER=${ENABLE_PROPOSER}|" "$ENV_FILE"
+sed -i "s|^L1_PROPOSER_PRIVATE_KEY=.*|L1_PROPOSER_PRIVATE_KEY=${L1_PROPOSER_PRIVATE_KEY}|" "$ENV_FILE"
+sed -i "s|^PROVER_ENDPOINTS=.*|PROVER_ENDPOINTS=${PROVER_ENDPOINTS}|" "$ENV_FILE"
+
+# Создание копии файла как .env
+cp "$ENV_FILE" "$(dirname "$ENV_FILE")/.env"
+
+echo "Конфигурация завершена и сохранена в .env.sample и .env"
