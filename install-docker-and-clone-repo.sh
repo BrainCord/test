@@ -31,7 +31,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 sudo docker run hello-world
 
 # Клонирование репозитория simple-taiko-node
-git clone https://github.com/lagunovsky/simple-taiko-node.git
+git clone https://github.com/taikoxyz/simple-taiko-node.git
 
 # Переход в каталог проекта
 cd simple-taiko-node
